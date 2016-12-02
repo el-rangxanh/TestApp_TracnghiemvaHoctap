@@ -31,7 +31,7 @@ public class ScreenSlidePageFragment extends Fragment {
     TextView tvsttcau, tvcauhoi;
     RadioGroup radioGroup;
     RadioButton radA, radB, radC, radD;
-    ImageView imgstar;
+    android.widget.ImageView imgstar;
 
     public ScreenSlidePageFragment() {
     }
@@ -59,6 +59,7 @@ public class ScreenSlidePageFragment extends Fragment {
         arr_cauhoi = screenSlideActivity.laydulieu();
         sochitranghtai = getArguments().getInt(DU_LIEU_TRANG);
         ktra = getArguments().getInt(DU_LIEU_TRA_LOI);
+        starcheck=getArguments().getInt(DU_LIEU_STAR_CHECK);
 
     }
 
