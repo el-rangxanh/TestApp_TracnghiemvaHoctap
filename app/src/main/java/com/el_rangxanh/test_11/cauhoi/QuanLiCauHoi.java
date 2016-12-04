@@ -15,6 +15,8 @@ public class QuanLiCauHoi {
     }
 
     //Lấy danh sách câu hỏi theo dạng mảng
+    
+    // khoa hoc tu nhien
     public ArrayList laycauhoiVatLy(int sttktra, String monhoc) {
         ArrayList<CauHoi> listcauhoi = new ArrayList<CauHoi>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -32,7 +34,7 @@ public class QuanLiCauHoi {
      public ArrayList laycauhoiToan(int sttktra, String monhoc) {
         ArrayList<CauHoi> listcauhoi = new ArrayList<CauHoi>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM toan3 WHERE sttktra='" + sttktra + "' AND monhoc='" + monhoc + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM toan1 WHERE sttktra='" + sttktra + "' AND monhoc='" + monhoc + "'", null);
         cursor.moveToFirst();
         do {
             CauHoi dulieucauhoi;
@@ -71,6 +73,8 @@ public class QuanLiCauHoi {
         } while (cursor.moveToNext());
         return listcauhoi;
     }
+    
+    //khoa hoc xa hoi
      public ArrayList laycauhoiTiengAnh(int sttktra, String monhoc) {
         ArrayList<CauHoi> listcauhoi = new ArrayList<CauHoi>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
