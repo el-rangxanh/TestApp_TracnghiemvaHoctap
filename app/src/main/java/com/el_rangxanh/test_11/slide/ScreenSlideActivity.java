@@ -63,7 +63,7 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         quanlicauhoi = new QuanLiCauHoi(this);
         arr_cauhoi = new ArrayList<CauHoi>();
-        arr_cauhoi = quanlicauhoi.laycauhoi(1, "ly");
+        arr_cauhoi = quanlicauhoi.laycauhoiVatLy(1, "ly");
 
         tvnopbai = (TextView) findViewById(R.id.tvNopBai);
         tvthoigian = (TextView) findViewById(R.id.tvThoigian);
