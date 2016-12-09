@@ -77,6 +77,18 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
+    // method hien thi fab
+    private void hienthi_fab() {
+        fab_tumoi.show();
+        fab_dongtubqt.show();
+        fab_congthuc.show();
+    }
+  // method an fab
+    private void an_fab() {
+        fab_tumoi.hide();
+        fab_dongtubqt.hide();
+        fab_congthuc.hide();
+    }
 
     @Override
     public void onBackPressed() {
@@ -108,22 +120,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    // method hien thi fab
-    private void hienthi_fab() {
-        fab_tumoi.show();
-        fab_dongtubqt.show();
-        fab_congthuc.show();
-    }
-
-    // method an fab
-    private void an_fab() {
-        fab_tumoi.hide();
-        fab_dongtubqt.hide();
-        fab_congthuc.hide();
-    }
-
+        }
+    
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
