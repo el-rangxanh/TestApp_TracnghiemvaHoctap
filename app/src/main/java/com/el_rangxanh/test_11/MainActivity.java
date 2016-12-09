@@ -3,7 +3,6 @@ package com.el_rangxanh.test_11;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.el_rangxanh.test_11.cauhoi.DBHelper;
 import com.el_rangxanh.test_11.monhoc.AnhFragment;
 import com.el_rangxanh.test_11.monhoc.CongDanFragment;
@@ -23,10 +23,13 @@ import com.el_rangxanh.test_11.monhoc.LichSuFragment;
 import com.el_rangxanh.test_11.monhoc.LyFragment;
 import com.el_rangxanh.test_11.monhoc.SinhFragment;
 import com.el_rangxanh.test_11.monhoc.ToanFragment;
+
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    FloatingActionButton fab, fab_tumoi, fab_dongtubqt, fab_congthuc;
+    boolean an_hien = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +38,21 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab_tumoi = (FloatingActionButton) findViewById(R.id.fab_newword);
+        fab_dongtubqt = (FloatingActionButton) findViewById(R.id.fab_dongtu);
+        fab_congthuc = (FloatingActionButton) findViewById(R.id.fab_congthuc);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (an_hien == false) {
+                    hienthi_fab();
+                    an_hien = true;
+                } else {
+                    an_fab();
+                    an_hien = false;
+                }
             }
         });
 
@@ -57,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main, homeFragment, homeFragment.getTag()).commit();
 
-       DBHelper dbHelper=new DBHelper(this);
+        DBHelper dbHelper = new DBHelper(this);
         try {
             dbHelper.createDataBase();
         } catch (IOException e) {
@@ -98,6 +110,20 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    // method hien thi fab
+    private void hienthi_fab() {
+        fab_tumoi.show();
+        fab_dongtubqt.show();
+        fab_congthuc.show();
+    }
+
+    // method an fab
+    private void an_fab() {
+        fab_tumoi.hide();
+        fab_dongtubqt.hide();
+        fab_congthuc.hide();
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -128,15 +154,15 @@ public class MainActivity extends AppCompatActivity
             AnhFragment anhFragment = new AnhFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, anhFragment, anhFragment.getTag()).commit();
-        }else if (id == R.id.su) {
+        } else if (id == R.id.su) {
             LichSuFragment suFragment = new LichSuFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, suFragment, suFragment.getTag()).commit();
-        }else if (id == R.id.dia) {
+        } else if (id == R.id.dia) {
             DiaLyFragment diaFragment = new DiaLyFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, diaFragment, diaFragment.getTag()).commit();
-        }else if (id == R.id.congdan) {
+        } else if (id == R.id.congdan) {
             CongDanFragment congdanFragment = new CongDanFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, congdanFragment, congdanFragment.getTag()).commit();
@@ -147,3 +173,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+
